@@ -1,5 +1,3 @@
-@font-face{font-family:DavaSans;src:url('/fonts/DavaSans-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
-:root{--font-dava:DavaSans}
 .companion-app .dash-main{max-width:1080px;padding-top:42px;padding-bottom:32px}
 .companion-app .intro{margin-bottom:30px}
 .companion-app .step{display:flex;gap:16px;margin-top:14px;padding:22px;border:1px solid var(--border);border-radius:13px;background:var(--surface)}

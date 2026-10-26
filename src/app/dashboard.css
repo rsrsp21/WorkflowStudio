@@ -181,7 +181,7 @@
 .route-heading h1 { margin:8px 0 6px; font-size:32px; letter-spacing:-.045em; }
 .route-heading p { margin:0; color:var(--muted); font-size:11px; }
 .route-back { display:inline-block; margin-left:-8px; text-decoration:none; }
-.app-back-button { display:inline-flex; align-items:center; gap:8px; min-height:40px; margin:0 0 12px; padding:9px 13px 9px 10px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--muted); cursor:pointer; font-family:var(--font-dava),ui-sans-serif,system-ui,sans-serif; font-size:13px; font-weight:600; line-height:1; text-decoration:none; transition:border-color .16s ease,background .16s ease,color .16s ease,transform .16s ease; }
+.app-back-button { display:inline-flex; align-items:center; gap:8px; min-height:40px; margin:0 0 12px; padding:9px 13px 9px 10px; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--muted); cursor:pointer; font-family:ui-sans-serif,system-ui,sans-serif; font-size:13px; font-weight:600; line-height:1; text-decoration:none; transition:border-color .16s ease,background .16s ease,color .16s ease,transform .16s ease; }
 .app-back-button svg { width:var(--icon-size); height:var(--icon-size); fill:none; stroke:currentColor; stroke-width:var(--icon-stroke); stroke-linecap:round; stroke-linejoin:round; }
 .app-back-button:hover { border-color:var(--border-strong); background:var(--surface-subtle); color:var(--text); transform:translateX(-2px); }
 .route-state { display:grid; min-height:300px; place-items:center; align-content:center; gap:7px; border:1px dashed var(--border); border-radius:14px; background:var(--surface); color:var(--muted); text-align:center; }
@@ -593,7 +593,7 @@
 }
 
 /* Larger, calmer information scale across every routed product screen. */
-.dash-app { font-family:var(--font-dava),ui-sans-serif,system-ui,sans-serif; font-size:14px; }
+.dash-app { font-family:ui-sans-serif,system-ui,sans-serif; font-size:14px; }
 .dash-app p { font-size:13px; line-height:1.6; }
 .dash-app label,.dash-app input,.dash-app textarea,.dash-app select,.dash-app button,.dash-app a { font-size:13px; }
 .dash-app span { font-size:12px; }
@@ -601,19 +601,19 @@
 .dash-app strong { font-size:13px; }
 .dash-app h3 { font-size:15px; }
 .dash-brand strong { font-size:15px; }
-.dash-brand strong { font-family:var(--font-dava),ui-sans-serif,system-ui,sans-serif; font-weight:600; line-height:1; }
+.dash-brand strong { font-family:ui-sans-serif,system-ui,sans-serif; font-weight:600; line-height:1; }
 .dash-intro p { font-size:14px; }
-.dash-button { min-height:42px; padding:10px 15px; font-family:var(--font-dava),ui-sans-serif,system-ui,sans-serif; }
+.dash-button { min-height:42px; padding:10px 15px; font-family:ui-sans-serif,system-ui,sans-serif; }
 .dash-section-heading h2 { font-size:19px; }
-.dash-metrics strong { font:600 25px/1 var(--font-dava),ui-sans-serif,sans-serif; }
-.dash-app input,.dash-app textarea,.dash-app select { min-height:42px; font-family:var(--font-dava),ui-sans-serif,system-ui,sans-serif; }
+.dash-metrics strong { font:600 25px/1 ui-sans-serif,sans-serif; }
+.dash-app input,.dash-app textarea,.dash-app select { min-height:42px; font-family:ui-sans-serif,system-ui,sans-serif; }
 .canvas-node { height:116px; }
 .dash-icon-button { width:42px; height:42px; }
 .dash-button,.dash-icon-button,.app-back-button { transition:background-color .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease,transform .16s ease; }
 .dash-button .dash-icon,.dash-icon-button .dash-icon,.text-button .dash-icon { width:var(--icon-size); height:var(--icon-size); flex:0 0 var(--icon-size); stroke-width:var(--icon-stroke); }
 .destructive-icon-button:hover { border-color:color-mix(in srgb,#e5484d 45%,var(--border)); background:color-mix(in srgb,#e5484d 10%,var(--surface)); color:#e5484d; }
 .dash-icon-button[aria-label^="Delete"]:hover { border-color:color-mix(in srgb,#e5484d 45%,var(--border)); background:color-mix(in srgb,#e5484d 10%,var(--surface)); color:#e5484d; }
-.monitor-stream .monitor-empty { font-family:var(--font-dava),ui-sans-serif,system-ui,sans-serif; }
+.monitor-stream .monitor-empty { font-family:ui-sans-serif,system-ui,sans-serif; }
 .elevated-confirmation {
   margin-top: 0.7rem;
   padding: 0.8rem;
