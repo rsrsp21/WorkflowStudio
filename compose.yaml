@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:17-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: workflow_studio
+      POSTGRES_PASSWORD: ${PGPASSWORD:?Set PGPASSWORD in the shell or .env}
+      POSTGRES_DB: workflow_studio
+    volumes:
+      - workflow-studio-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U workflow_studio -d workflow_studio"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGHOST: postgres
+      PGPORT: 5432
+      PGUSER: workflow_studio
+      PGPASSWORD: ${PGPASSWORD}
+      PGDATABASE: workflow_studio
+      PGSSL_MODE: disable
+      CODEX_RUNTIME_MODE: paired
+      WORKFLOW_STUDIO_RUNTIME_ENGINE: mastra
+      WORKFLOW_STUDIO_ENABLE_LEGACY_ROLLBACK: "false"
+      WORKFLOW_STUDIO_LAUNCH_PROFILE: ${WORKFLOW_STUDIO_LAUNCH_PROFILE:-demo}
+      WORKFLOW_STUDIO_ENFORCE_ROLE_GATES: ${WORKFLOW_STUDIO_ENFORCE_ROLE_GATES:-false}
+      WORKFLOW_STUDIO_REQUIRE_SEPARATE_REVIEWER: ${WORKFLOW_STUDIO_REQUIRE_SEPARATE_REVIEWER:-false}
+      WORKFLOW_STUDIO_BOOTSTRAP_ADMIN_EMAILS: ${WORKFLOW_STUDIO_BOOTSTRAP_ADMIN_EMAILS:-}
+      WORKFLOW_STUDIO_PUBLIC_ORIGIN: ${WORKFLOW_STUDIO_PUBLIC_ORIGIN:-http://localhost:3000}
+      WORKFLOW_STUDIO_RELEASE_ID: ${WORKFLOW_STUDIO_RELEASE_ID:-local-compose}
+      WORKFLOW_STUDIO_METRICS_TOKEN: ${WORKFLOW_STUDIO_METRICS_TOKEN:-local-compose-metrics-token-change-me}
+      WORKFLOW_STUDIO_RUN_RETENTION_DAYS: ${WORKFLOW_STUDIO_RUN_RETENTION_DAYS:-90}
+      WORKFLOW_STUDIO_JOB_RETENTION_DAYS: ${WORKFLOW_STUDIO_JOB_RETENTION_DAYS:-30}
+      WORKFLOW_STUDIO_CONNECTION_RETENTION_DAYS: ${WORKFLOW_STUDIO_CONNECTION_RETENTION_DAYS:-30}
+      WORKFLOW_STUDIO_COMPANION_DOWNLOAD_URL: ${WORKFLOW_STUDIO_COMPANION_DOWNLOAD_URL:-http://localhost:3000/downloads/workflow-studio-companion.zip}
+      WORKFLOW_STUDIO_COMPANION_CHECKSUM_URL: ${WORKFLOW_STUDIO_COMPANION_CHECKSUM_URL:-http://localhost:3000/downloads/workflow-studio-companion.zip.sha256}
+      WORKFLOW_STUDIO_COMPANION_SIGNATURE_URL: ${WORKFLOW_STUDIO_COMPANION_SIGNATURE_URL:-}
+      WORKFLOW_STUDIO_COMPANION_PUBLIC_KEY_URL: ${WORKFLOW_STUDIO_COMPANION_PUBLIC_KEY_URL:-}
+    ports:
+      - "3000:3000"
+
+volumes:
+  workflow-studio-postgres:

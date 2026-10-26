@@ -1,0 +1,13 @@
+.git
+.next
+.next-dev
+node_modules
+release
+backups
+data
+.env
+.env.*
+*.log
+*.tsbuildinfo
+companion/.next
+companion/node_modules

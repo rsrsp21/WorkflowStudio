@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["outputs", "selectedCondition", "summary", "artifacts", "trace"],
+  "properties": {
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "valueJson"],
+        "properties": {
+          "key": { "type": "string" },
+          "valueJson": { "type": "string" }
+        }
+      }
+    },
+    "selectedCondition": { "type": "string" },
+    "summary": { "type": "string" },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "description"],
+        "properties": {
+          "path": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runId", "taskId", "sourcePlanId", "workflowId", "assignmentId", "projectId", "nodeId"],
+      "properties": {
+        "runId": { "type": "string" },
+        "taskId": { "type": "string" },
+        "sourcePlanId": { "type": "string" },
+        "workflowId": { "type": "string" },
+        "assignmentId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "nodeId": { "type": "string" }
+      }
+    }
+  }
+}

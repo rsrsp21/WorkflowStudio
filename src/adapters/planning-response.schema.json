@@ -1,0 +1,350 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plan",
+    "warnings",
+    "openQuestions",
+    "trace"
+  ],
+  "properties": {
+    "plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "schemaVersion",
+        "name",
+        "description",
+        "planningPrompt",
+        "workspacePath",
+        "constraints",
+        "openQuestions",
+        "questionResponses",
+        "completionCriteria",
+        "nodes",
+        "edges",
+        "harness",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "schemaVersion": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "planningPrompt": {
+          "type": "string"
+        },
+        "workspacePath": {
+          "type": "string"
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "openQuestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "questionResponses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "question",
+              "answer"
+            ],
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "completionCriteria": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "name",
+              "type",
+              "prompt",
+              "skillIds",
+              "inputKeys",
+              "outputKeys",
+              "retryLimit",
+              "requiresApproval",
+              "approvalOptions",
+              "readOnly",
+              "joinMode",
+              "joinQuorum"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "agent",
+                  "codex",
+                  "tool",
+                  "validation",
+                  "approval",
+                  "loop",
+                  "success",
+                  "failure",
+                  "fork",
+                  "join"
+                ]
+              },
+              "prompt": {
+                "type": "string"
+              },
+              "skillIds": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "inputKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "outputKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "retryLimit": {
+                "type": "number"
+              },
+              "requiresApproval": {
+                "type": "boolean"
+              },
+              "approvalOptions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "label",
+                    "keyword",
+                    "action"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "keyword": {
+                      "type": "string"
+                    },
+                    "action": {
+                      "type": "string",
+                      "enum": [
+                        "continue",
+                        "revise",
+                        "stop"
+                      ]
+                    }
+                  }
+                }
+              },
+              "readOnly": {
+                "type": "boolean"
+              },
+              "joinMode": {
+                "type": "string",
+                "enum": [
+                  "all",
+                  "quorum"
+                ]
+              },
+              "joinQuorum": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "from",
+              "to",
+              "condition"
+            ],
+            "properties": {
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              },
+              "condition": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "harness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sandboxMode",
+            "maxRetries",
+            "maxLoopIterations",
+            "maxConcurrentNodes",
+            "allowedTools",
+            "allowedWorkspacePaths",
+            "requireApprovalForDestructiveActions",
+            "adaptationEnabled",
+            "adaptationScope",
+            "parallelFailureMode"
+          ],
+          "properties": {
+            "sandboxMode": {
+              "type": "string",
+              "enum": [
+                "workspace",
+                "read-only",
+                "isolated"
+              ]
+            },
+            "maxRetries": {
+              "type": "number"
+            },
+            "maxLoopIterations": {
+              "type": "number"
+            },
+            "maxConcurrentNodes": {
+              "type": "number"
+            },
+            "allowedTools": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "allowedWorkspacePaths": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "requireApprovalForDestructiveActions": {
+              "type": "boolean"
+            },
+            "adaptationEnabled": {
+              "type": "boolean"
+            },
+            "adaptationScope": {
+              "type": "string",
+              "enum": [
+                "run",
+                "project",
+                "user"
+              ]
+            },
+            "parallelFailureMode": {
+              "type": "string",
+              "enum": [
+                "fail-fast",
+                "collect-all"
+              ]
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "approved",
+            "running",
+            "paused",
+            "completed",
+            "failed"
+          ]
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "planningRequestId",
+        "planningThreadId",
+        "planId"
+      ],
+      "properties": {
+        "planningRequestId": {
+          "type": "string"
+        },
+        "planningThreadId": {
+          "type": "string"
+        },
+        "planId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

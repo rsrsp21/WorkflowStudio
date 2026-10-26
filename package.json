@@ -1,0 +1,71 @@
+{
+  "name": "workflow-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first workflow planning and execution studio.",
+  "engines": {
+    "node": ">=24.15.0 <25"
+  },
+  "bin": {
+    "workflow-studio-runtime": "scripts/workflow-studio-runtime.mjs"
+  },
+  "files": [
+    "scripts/workflow-studio-runtime.mjs",
+    "scripts/studio-home.cjs",
+    "scripts/project-deliverables.cjs",
+    "scripts/runtime-result-spool.cjs",
+    "docs/local-runtime-companion.md",
+    "README.md"
+  ],
+  "scripts": {
+    "db:check": "node scripts/check-database.cjs",
+    "db:verify": "node scripts/verify-postgres.cjs",
+    "db:backup": "node scripts/postgres-backup.cjs",
+    "db:restore": "node scripts/postgres-restore.cjs",
+    "db:compare": "node scripts/compare-postgres.cjs",
+    "db:seed-scale-fixture": "node scripts/seed-scale-fixture.cjs",
+    "retention:check": "node scripts/enforce-retention.cjs",
+    "retention:enforce": "node scripts/enforce-retention.cjs --confirm",
+    "dev": "next dev",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && next build",
+    "start": "next start",
+    "runtime:login": "node scripts/workflow-studio-runtime.mjs --login",
+    "runtime:connect": "node scripts/workflow-studio-runtime.mjs",
+    "runtime:package": "npm pack --dry-run",
+    "load:smoke": "node scripts/load-smoke.mjs",
+    "load:runtime-heartbeats": "node scripts/load-runtime-heartbeats.mjs",
+    "qualify:multi-instance": "node scripts/qualify-multi-instance.mjs",
+    "qualify:rollout": "node scripts/qualify-rollout.mjs",
+    "qualify:runtime": "node scripts/qualify-runtime-reliability.cjs",
+    "launch:check": "node scripts/launch-preflight.mjs",
+    "lint": "eslint src tests next.config.js vitest.config.mts eslint.config.mjs",
+    "test": "vitest run",
+    "companion:dev": "npm --prefix companion run dev",
+    "companion:build": "node scripts/sync-companion-theme.cjs && npm --prefix companion run build",
+    "companion:package": "node scripts/package-companion.cjs",
+    "companion:verify": "node scripts/verify-companion-package.cjs"
+  },
+  "dependencies": {
+    "@mastra/core": "1.65.0",
+    "@mastra/pg": "1.23.0",
+    "@openai/codex": "0.149.1",
+    "next": "16.3.3",
+    "pg": "^8.23.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@types/node": "^20.14.12",
+    "@types/pg": "^8.23.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "@vitejs/plugin-react": "^6.1.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.3",
+    "typescript": "^5.5.4",
+    "vitest": "^4.1.11"
+  }
+}
