@@ -1,0 +1,20 @@
+# GitGuardian secret scanning configuration.
+# Tests create throwaway users with placeholder passwords, and the example
+# config files ship placeholder values. None of them are real credentials.
+version: 2
+
+secret:
+  ignored_paths:
+    - "tests/**"
+
+  ignored_matches:
+    - name: Test user password placeholder
+      match: password-123
+    - name: Docker Compose metrics token default
+      match: local-compose-metrics-token-change-me
+    - name: README example database password
+      match: choose-a-strong-password
+    - name: .env.example password placeholder
+      match: replace-me
+    - name: .env.example secret store placeholder
+      match: replace-with-secret-store-value
