@@ -245,6 +245,12 @@ plan/           Phase-by-phase delivery plan and reports
 
 ---
 
+## 📄 License
+
+Proprietary. All rights reserved. See [LICENSE](./LICENSE).
+
+---
+
 <div align="center">
 
 **Workflow Studio** keeps agent work repeatable, reviewable, and auditable.
